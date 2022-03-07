@@ -35,10 +35,12 @@ end
         @incoming_text = handle.read
         handle.close
         @characters = @braille.isolate(@incoming_text)
+        @characters.pop
     end
 
     it 'can change each @characters into their braille equivalent' do
-      expected = letter_to_braille(@characters)
-      expect(expected).to eq(["0.", "..", ".."], ["0.", "0.", ".."], ["00", "..", ".."])
+      expected = @braille.letter_to_braille(@characters)
+      # require "pry"; binding.pry
+      expect(expected).to eq([["0.", "..", ".."], ["0.", "0.", ".."], ["00", "..", ".."]])
     end
   end

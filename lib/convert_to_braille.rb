@@ -1,5 +1,5 @@
 class ConvertToBraille
-  attr_reader :braille_reference
+  attr_reader :braille_reference, :braille_characters
 
   def initialize
     @braille_reference = {
@@ -40,5 +40,9 @@ class ConvertToBraille
 
   def isolate(text)
     @characters = text.chars
+  end
+
+  def letter_to_braille(characters)
+    @braille_characters = @characters.map {|letter| @braille_reference[letter]}
   end
 end
