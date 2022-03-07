@@ -87,9 +87,9 @@ end
       @characters = @braille.isolate(@incoming_text)
       # @characters.pop
       @braille_characters = @braille.letter_to_braille(@characters)
-      @braille.transposer(@braille_characters)
+      @braille.transposer(@braille.braille_characters)
+      # require "pry"; binding.nit
       @braille.convert_to_string
-      # require "pry"; binding.pry
     end
 
     it "can divide braille string into separate strings of 80 characters" do
@@ -149,3 +149,4 @@ end
         expect(expected).to eq("0.0.00\n..0...\n......")
       end
   end
+#

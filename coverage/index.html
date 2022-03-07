@@ -14,7 +14,7 @@
       <img src="./assets/0.12.3/loading.gif" alt="loading"/>
     </div>
     <div id="wrapper" class="hide">
-      <div class="timestamp">Generated <abbr class="timeago" title="2022-03-07T12:39:01-07:00">2022-03-07T12:39:01-07:00</abbr></div>
+      <div class="timestamp">Generated <abbr class="timeago" title="2022-03-07T13:29:32-07:00">2022-03-07T13:29:32-07:00</abbr></div>
       <ul class="group_tabs"></ul>
 
       <div id="content">
@@ -30,7 +30,7 @@
      covered at
      <span class="covered_strength">
        <span class="green">
-         4.33
+         4.39
        </span>
     </span> hits/line
     )
@@ -43,8 +43,8 @@
   </div>
 
   <div class="t-line-summary">
-    <b>132</b> relevant lines,
-    <span class="green"><b>132</b> lines covered</span> and
+    <b>134</b> relevant lines,
+    <span class="green"><b>134</b> lines covered</span> and
     <span class="red"><b>0</b> lines missed. </span>
     (<span class="green">
   100.0%
@@ -73,11 +73,11 @@
           <tr class="t-file">
             <td class="strong t-file__name"><a href="#14c1a7fead32aeaee768d297756ffba1bd8900a1" class="src_link" title="lib/convert_to_braille.rb">lib/convert_to_braille.rb</a></td>
             <td class="green strong cell--number t-file__coverage">100.00 %</td>
-            <td class="cell--number">87</td>
-            <td class="cell--number">28</td>
-            <td class="cell--number">28</td>
+            <td class="cell--number">88</td>
+            <td class="cell--number">30</td>
+            <td class="cell--number">30</td>
             <td class="cell--number">0</td>
-            <td class="cell--number">12.46</td>
+            <td class="cell--number">12.17</td>
             
           </tr>
         
@@ -95,7 +95,7 @@
           <tr class="t-file">
             <td class="strong t-file__name"><a href="#a383f85751433745e8594adcf7166c52573475ae" class="src_link" title="spec/convert_to_braille_spec.rb">spec/convert_to_braille_spec.rb</a></td>
             <td class="green strong cell--number t-file__coverage">100.00 %</td>
-            <td class="cell--number">151</td>
+            <td class="cell--number">152</td>
             <td class="cell--number">94</td>
             <td class="cell--number">94</td>
             <td class="cell--number">0</td>
@@ -145,8 +145,8 @@
     
 
     <div class="t-line-summary">
-      <b>28</b> relevant lines.
-      <span class="green"><b>28</b> lines covered</span> and
+      <b>30</b> relevant lines.
+      <span class="green"><b>30</b> lines covered</span> and
       <span class="red"><b>0</b> lines missed.</span>
     </div>
 
@@ -670,18 +670,18 @@
 
             
 
-            <code class="ruby">    letter_to_braille(@characters)</code>
+            <code class="ruby">    @braille_characters = self.letter_to_braille(@characters)</code>
           </li>
         </div>
       
         <div>
-          <li class="covered" data-hits="1" data-linenumber="48">
-            <span class="hits">1</span>
+          <li class="never" data-hits="" data-linenumber="48">
+            
             
 
             
 
-            <code class="ruby">    transposer(@braille_characters)</code>
+            <code class="ruby"># require &quot;pry&quot;; binding.pry</code>
           </li>
         </div>
       
@@ -692,7 +692,7 @@
 
             
 
-            <code class="ruby">    @braille_strings = self.convert_to_string</code>
+            <code class="ruby">    transposer(@braille_characters)</code>
           </li>
         </div>
       
@@ -703,7 +703,7 @@
 
             
 
-            <code class="ruby">    @braille_output = format(@braille_strings)</code>
+            <code class="ruby">    @braille_strings = self.convert_to_string</code>
           </li>
         </div>
       
@@ -714,18 +714,18 @@
 
             
 
-            <code class="ruby">    @braille_output</code>
+            <code class="ruby">    @braille_output = format(@braille_strings)</code>
           </li>
         </div>
       
         <div>
-          <li class="never" data-hits="" data-linenumber="52">
-            
-            
-
+          <li class="covered" data-hits="1" data-linenumber="52">
+            <span class="hits">1</span>
             
 
-            <code class="ruby">  end</code>
+            
+
+            <code class="ruby">    @braille_output</code>
           </li>
         </div>
       
@@ -736,12 +736,23 @@
 
             
 
+            <code class="ruby">  end</code>
+          </li>
+        </div>
+      
+        <div>
+          <li class="never" data-hits="" data-linenumber="54">
+            
+            
+
+            
+
             <code class="ruby"></code>
           </li>
         </div>
       
         <div>
-          <li class="covered" data-hits="1" data-linenumber="54">
+          <li class="covered" data-hits="1" data-linenumber="55">
             <span class="hits">1</span>
             
 
@@ -752,7 +763,7 @@
         </div>
       
         <div>
-          <li class="covered" data-hits="9" data-linenumber="55">
+          <li class="covered" data-hits="9" data-linenumber="56">
             <span class="hits">9</span>
             
 
@@ -763,7 +774,7 @@
         </div>
       
         <div>
-          <li class="covered" data-hits="9" data-linenumber="56">
+          <li class="covered" data-hits="9" data-linenumber="57">
             <span class="hits">9</span>
             
 
@@ -774,7 +785,7 @@
         </div>
       
         <div>
-          <li class="covered" data-hits="9" data-linenumber="57">
+          <li class="covered" data-hits="9" data-linenumber="58">
             <span class="hits">9</span>
             
 
@@ -785,7 +796,7 @@
         </div>
       
         <div>
-          <li class="never" data-hits="" data-linenumber="58">
+          <li class="never" data-hits="" data-linenumber="59">
             
             
 
@@ -796,7 +807,7 @@
         </div>
       
         <div>
-          <li class="never" data-hits="" data-linenumber="59">
+          <li class="never" data-hits="" data-linenumber="60">
             
             
 
@@ -807,7 +818,7 @@
         </div>
       
         <div>
-          <li class="never" data-hits="" data-linenumber="60">
+          <li class="never" data-hits="" data-linenumber="61">
             
             
 
@@ -818,7 +829,7 @@
         </div>
       
         <div>
-          <li class="covered" data-hits="1" data-linenumber="61">
+          <li class="covered" data-hits="1" data-linenumber="62">
             <span class="hits">1</span>
             
 
@@ -829,7 +840,7 @@
         </div>
       
         <div>
-          <li class="never" data-hits="" data-linenumber="62">
+          <li class="never" data-hits="" data-linenumber="63">
             
             
 
@@ -840,7 +851,7 @@
         </div>
       
         <div>
-          <li class="covered" data-hits="264" data-linenumber="63">
+          <li class="covered" data-hits="264" data-linenumber="64">
             <span class="hits">264</span>
             
 
@@ -851,35 +862,24 @@
         </div>
       
         <div>
-          <li class="never" data-hits="" data-linenumber="64">
-            
-            
-
+          <li class="covered" data-hits="8" data-linenumber="65">
+            <span class="hits">8</span>
             
 
-            <code class="ruby">      # @braille_characters.pop</code>
+            
+
+            <code class="ruby">      @braille_characters.delete(nil)</code>
           </li>
         </div>
       
         <div>
-          <li class="never" data-hits="" data-linenumber="65">
-            
-            
-
-            
-
-            <code class="ruby">      # @braille_characters</code>
-          </li>
-        </div>
-      
-        <div>
-          <li class="never" data-hits="" data-linenumber="66">
-            
+          <li class="covered" data-hits="8" data-linenumber="66">
+            <span class="hits">8</span>
             
 
             
 
-            <code class="ruby">      # characters.map {|letter| @braille_reference[letter]}</code>
+            <code class="ruby">      @braille_characters</code>
           </li>
         </div>
       
@@ -890,7 +890,7 @@
 
             
 
-            <code class="ruby">  end</code>
+            <code class="ruby">      # characters.map {|letter| @braille_reference[letter]}</code>
           </li>
         </div>
       
@@ -901,12 +901,23 @@
 
             
 
+            <code class="ruby">  end</code>
+          </li>
+        </div>
+      
+        <div>
+          <li class="never" data-hits="" data-linenumber="69">
+            
+            
+
+            
+
             <code class="ruby"></code>
           </li>
         </div>
       
         <div>
-          <li class="covered" data-hits="1" data-linenumber="69">
+          <li class="covered" data-hits="1" data-linenumber="70">
             <span class="hits">1</span>
             
 
@@ -917,7 +928,7 @@
         </div>
       
         <div>
-          <li class="covered" data-hits="24" data-linenumber="70">
+          <li class="covered" data-hits="24" data-linenumber="71">
             <span class="hits">24</span>
             
 
@@ -928,7 +939,7 @@
         </div>
       
         <div>
-          <li class="never" data-hits="" data-linenumber="71">
+          <li class="never" data-hits="" data-linenumber="72">
             
             
 
@@ -939,24 +950,13 @@
         </div>
       
         <div>
-          <li class="never" data-hits="" data-linenumber="72">
-            
-            
-
-            
-
-            <code class="ruby">  end</code>
-          </li>
-        </div>
-      
-        <div>
           <li class="never" data-hits="" data-linenumber="73">
             
             
 
             
 
-            <code class="ruby"></code>
+            <code class="ruby">  end</code>
           </li>
         </div>
       
@@ -967,7 +967,7 @@
 
             
 
-            <code class="ruby"># private</code>
+            <code class="ruby"></code>
           </li>
         </div>
       
@@ -978,12 +978,23 @@
 
             
 
+            <code class="ruby"># private</code>
+          </li>
+        </div>
+      
+        <div>
+          <li class="never" data-hits="" data-linenumber="76">
+            
+            
+
+            
+
             <code class="ruby"></code>
           </li>
         </div>
       
         <div>
-          <li class="covered" data-hits="1" data-linenumber="76">
+          <li class="covered" data-hits="1" data-linenumber="77">
             <span class="hits">1</span>
             
 
@@ -994,7 +1005,7 @@
         </div>
       
         <div>
-          <li class="covered" data-hits="2" data-linenumber="77">
+          <li class="covered" data-hits="2" data-linenumber="78">
             <span class="hits">2</span>
             
 
@@ -1005,7 +1016,7 @@
         </div>
       
         <div>
-          <li class="covered" data-hits="1" data-linenumber="78">
+          <li class="covered" data-hits="1" data-linenumber="79">
             <span class="hits">1</span>
             
 
@@ -1016,7 +1027,7 @@
         </div>
       
         <div>
-          <li class="covered" data-hits="1" data-linenumber="79">
+          <li class="covered" data-hits="1" data-linenumber="80">
             <span class="hits">1</span>
             
 
@@ -1027,7 +1038,7 @@
         </div>
       
         <div>
-          <li class="covered" data-hits="1" data-linenumber="80">
+          <li class="covered" data-hits="1" data-linenumber="81">
             <span class="hits">1</span>
             
 
@@ -1038,7 +1049,7 @@
         </div>
       
         <div>
-          <li class="covered" data-hits="1" data-linenumber="81">
+          <li class="covered" data-hits="1" data-linenumber="82">
             <span class="hits">1</span>
             
 
@@ -1049,7 +1060,7 @@
         </div>
       
         <div>
-          <li class="never" data-hits="" data-linenumber="82">
+          <li class="never" data-hits="" data-linenumber="83">
             
             
 
@@ -1060,7 +1071,7 @@
         </div>
       
         <div>
-          <li class="covered" data-hits="1" data-linenumber="83">
+          <li class="covered" data-hits="1" data-linenumber="84">
             <span class="hits">1</span>
             
 
@@ -1071,7 +1082,7 @@
         </div>
       
         <div>
-          <li class="never" data-hits="" data-linenumber="84">
+          <li class="never" data-hits="" data-linenumber="85">
             
             
 
@@ -1082,7 +1093,7 @@
         </div>
       
         <div>
-          <li class="never" data-hits="" data-linenumber="85">
+          <li class="never" data-hits="" data-linenumber="86">
             
             
 
@@ -1093,7 +1104,7 @@
         </div>
       
         <div>
-          <li class="never" data-hits="" data-linenumber="86">
+          <li class="never" data-hits="" data-linenumber="87">
             
             
 
@@ -1104,7 +1115,7 @@
         </div>
       
         <div>
-          <li class="never" data-hits="" data-linenumber="87">
+          <li class="never" data-hits="" data-linenumber="88">
             
             
 
@@ -2470,29 +2481,29 @@
 
             
 
-            <code class="ruby">      @braille.transposer(@braille_characters)</code>
+            <code class="ruby">      @braille.transposer(@braille.braille_characters)</code>
           </li>
         </div>
       
         <div>
-          <li class="covered" data-hits="4" data-linenumber="91">
+          <li class="never" data-hits="" data-linenumber="91">
+            
+            
+
+            
+
+            <code class="ruby">      # require &quot;pry&quot;; binding.nit</code>
+          </li>
+        </div>
+      
+        <div>
+          <li class="covered" data-hits="4" data-linenumber="92">
             <span class="hits">4</span>
             
 
             
 
             <code class="ruby">      @braille.convert_to_string</code>
-          </li>
-        </div>
-      
-        <div>
-          <li class="never" data-hits="" data-linenumber="92">
-            
-            
-
-            
-
-            <code class="ruby">      # require &quot;pry&quot;; binding.pry</code>
           </li>
         </div>
       
@@ -3142,6 +3153,17 @@
             
 
             <code class="ruby">  end</code>
+          </li>
+        </div>
+      
+        <div>
+          <li class="never" data-hits="" data-linenumber="152">
+            
+            
+
+            
+
+            <code class="ruby">#</code>
           </li>
         </div>
       

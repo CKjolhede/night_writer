@@ -44,7 +44,8 @@ class ConvertToBraille
   #format the strings with limit of 80 characters per line
   def convert(text)
     isolate(text)
-    letter_to_braille(@characters)
+    @braille_characters = self.letter_to_braille(@characters)
+# require "pry"; binding.pry
     transposer(@braille_characters)
     @braille_strings = self.convert_to_string
     @braille_output = format(@braille_strings)
@@ -61,8 +62,8 @@ class ConvertToBraille
   def letter_to_braille(characters)
     # require "pry"; binding.pry
       @braille_characters = characters.map {|letter| @braille_reference[letter]}
-      # @braille_characters.pop
-      # @braille_characters
+      @braille_characters.delete(nil)
+      @braille_characters
       # characters.map {|letter| @braille_reference[letter]}
   end
 
