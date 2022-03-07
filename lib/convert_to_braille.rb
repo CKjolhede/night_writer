@@ -52,7 +52,18 @@ class ConvertToBraille
 
   def convert_to_string
     @braille_strings = @transposed_braille.map! {|element| element.join}
+    # require "pry"; binding.pry
   end
 
-
+  def format(strings)
+    if strings[0].length > 80
+      split_string
+      transposer(@line_segments)
+      final_formatting
+      @braille_output
+    else
+      strings.join("\n")
+    end
+  end
+  
 end
