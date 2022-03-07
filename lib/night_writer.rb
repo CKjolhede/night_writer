@@ -4,12 +4,12 @@ incoming_text = handle.read
 
 handle.close
 
-braille = Converter_Braille.new
+# braille = ConvertToBraille.new
 
 puts "This is the incoming text #{incoming_text}"
-
-writer = File.open(ARGV[1], "w")
-write.write(braille.convert(incoming_text))
-write.close
-
-puts "Created #{ARGV[1]} containing #{incoming.text.length} characters"
+# require "pry"; binding.pry
+# writer = File.open(ARGV[1], "w")
+# write.write(braille.convert(incoming_text))
+# write.close
+#
+# puts "Created #{ARGV[1]} containing #{incoming.text.length} characters"
