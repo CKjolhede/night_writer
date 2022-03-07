@@ -1,12 +1,13 @@
 require './lib/convert_to_braille.rb'
-require 'test_message.txt'
+# require 'test_message.txt'
 
 
 RSpec.describe ConvertToBraille do
   before :each do
     @braille = ConvertToBraille.new
-      handle = File.open(test_message.txt, "r")
-      incoming_text = handle.read
+      handle = File.open("test_message.txt", "r")
+      #test message text is:  abc
+      @incoming_text = handle.read
       handle.close
   end
 
@@ -20,8 +21,9 @@ RSpec.describe ConvertToBraille do
   end
 
   it 'can isolate individual characters from text' do
-    expected = @braille.isolate(incoming_text)
-    expect(expected).to eq(["a","b","c"])
+    expected = @braille.isolate(@incoming_text)
+    #test message is "abc"
+    expect(expected).to eq(["a","b","c", "\n"])
   end
 
 end

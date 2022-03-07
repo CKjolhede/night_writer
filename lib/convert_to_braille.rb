@@ -37,4 +37,8 @@ class ConvertToBraille
   #convert the individual strings to their braille array equivalent
   #transpose the arrays to put into braille format using transpose method
   #convert the arrays back into strings and combine them using the join method
+
+  def isolate(text)
+    @characters = text.chars
+  end
 end
