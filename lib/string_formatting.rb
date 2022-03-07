@@ -10,4 +10,8 @@ module StringFormatting
     #line_segments is an array with 3 indices, each being a nested array of the top middle and bottom strings, respectively. Each nested array's elements are the original row of braille broken into 80 character segments, with the final segment being some length <= 80
     # require "pry"; binding.pry
   end
+
+  def transposer(braille_characters)
+    @transposed_braille = braille_characters.transpose
+  end
 end

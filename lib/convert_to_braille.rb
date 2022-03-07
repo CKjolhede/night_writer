@@ -50,10 +50,6 @@ class ConvertToBraille
     @braille_characters = @characters.map {|letter| @braille_reference[letter]}
   end
 
-  def transposer(braille_characters)
-    @transposed_braille = braille_characters.transpose
-  end
-
   def convert_to_string
     @braille_strings = @transposed_braille.map! {|element| element.join}
   end
