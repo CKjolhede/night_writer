@@ -114,7 +114,10 @@ end
     end
 
     it 'can properly format final converted braille text' do
-      expected = @braille.final_formatting(@transposed_braille)
-      expect(expected).to be_a(String)
+      @braille.split_string
+      @braille.transposer(@braille.line_segments)
+      expected = @braille.final_formatting
+      expect(expected).to eq("0.0.00000.00000..0.00.0.00000.00000..0.00.0..000000..0.0.00..0.0.00.0.0.00000.00\n..0....0.00.00000.00..0....0.00.00000.00..0.00...0.00.0.00000.0.0000.0.0.0.0.00.\n....................0.0.0.0.0.0.0.0.0.0.0000.0000000..0.0.....0.0.......0...0...\n.00.0.0..0000..00..0.0.0.0.00.0.0.00.00.0.\n0000.00.0..0.000000.0.0.0.0000.0.0..0000..\n0.....0...0...0.....0...0.0.......000.0...")
     end
+
   end

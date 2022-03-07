@@ -16,7 +16,11 @@ module StringFormatting
   end
   # transposer reorganizes the rows such that the top, middle, and bottom lines of each row are placed together within separate nested arrays.
 
-
+  def final_formatting
+    # require "pry"; binding.pry
+    @braille_output = @transposed_braille.flatten.join("\n")
+    # require "pry"; binding.pry
+  end
 
 
 end
