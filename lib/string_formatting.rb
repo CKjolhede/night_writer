@@ -14,4 +14,9 @@ module StringFormatting
   def transposer(braille_characters)
     @transposed_braille = braille_characters.transpose
   end
+  # transposer reorganizes the rows such that the top, middle, and bottom lines of each row are placed together within separate nested arrays.
+
+
+
+
 end

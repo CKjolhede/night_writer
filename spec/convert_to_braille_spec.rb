@@ -100,10 +100,21 @@ end
       first_top_row_segment = @braille.split_string[0][0]
       first_middle_row_segment = @braille.split_string[1][0]
       first_bottom_row_segment = @braille.split_string[2][0]
+      second_top_row_segment = @braille.split_string[0][1]
+      second_middle_row_segment = @braille.split_string[1][1]
+      second_bottom_row_segment = @braille.split_string[2][1]
       # require "pry"; binding.pry
-      expected = @braille.transposer(@braille.split_string)
+      expected = @braille.transposer(@braille.line_segments)
       expect(expected[0][0]).to eq(first_top_row_segment)
       expect(expected[0][1]).to eq(first_middle_row_segment)
       expect(expected[0][2]).to eq(first_bottom_row_segment)
+      expect(expected[1][0]).to eq(second_top_row_segment)
+      expect(expected[1][1]).to eq(second_middle_row_segment)
+      expect(expected[1][2]).to eq(second_bottom_row_segment)
+    end
+
+    it 'can properly format final converted braille text' do
+      expected = @braille.final_formatting(@transposed_braille)
+      expect(expected).to be_a(String)
     end
   end
