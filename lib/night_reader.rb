@@ -8,7 +8,7 @@ handle.close
 english = EnglishConverter.new
 
 writer = File.open(ARGV[1], "w")
-write.write(english.convert(incoming_text))
+writer.write(english.convert(incoming_text))
 write.close
 
-puts "Created #{ARGV[1]} containing #{incoming.text.length} characters"
+puts "Created #{ARGV[1]} containing #{incoming_text.length} characters"
