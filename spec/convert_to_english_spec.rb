@@ -20,3 +20,9 @@ RSpec.describe ConvertToEnglish do
     expect(@english_reference["0.", "..", ".."]).to eq("a")
     expect(@english_reference[".0", "00", ".."]).to eq('j')
   end
+
+  it 'can #message_split the braille.txt' do
+    expected = @english.message_split(@incoming_text)
+
+    expect(expected.length).to eq(3)
+  end
