@@ -61,4 +61,11 @@ end
       expected = @braille.transposer(@braille_characters)
       expect(expected).to eq([["0.", "0.", "00"],["..", "0.", ".."],["..", "..", ".."]])
     end
+
+    it 'can convert the transposed array into strings' do
+      # @transposed_braille.map! {|element| element.join }
+      tranposed = @braille.transposer(@braille_characters)
+      expected = @braille.convert_to_strings(transposed)
+      expect(expected).to eq([["0.0.00"],["..0..."],["......."]])
+    end
   end
