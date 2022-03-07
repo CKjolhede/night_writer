@@ -6,6 +6,8 @@ handle.close
 
 puts "This is the incoming text #{incoming_text}"
 
+english = EnglishConverter.new
+
 writer = File.open(ARGV[1], "w")
 write.write(english.convert(incoming_text))
 write.close

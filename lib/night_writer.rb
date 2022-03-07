@@ -4,6 +4,8 @@ incoming_text = handle.read
 
 handle.close
 
+braille = Converter_Braille.new
+
 puts "This is the incoming text #{incoming_text}"
 
 writer = File.open(ARGV[1], "w")
