@@ -4,7 +4,7 @@ incoming_text = handle.read
 
 handle.close
 
-# braille = ConvertToBraille.new
+braille = ConvertToBraille.new
 
 puts "This is the incoming text #{incoming_text}"
 # require "pry"; binding.pry
