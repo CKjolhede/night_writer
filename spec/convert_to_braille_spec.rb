@@ -44,3 +44,21 @@ end
       expect(expected).to eq([["0.", "..", ".."], ["0.", "0.", ".."], ["00", "..", ".."]])
     end
   end
+
+  context "Transform Braille Character Array" do
+    before :each do
+      @braille = ConvertToBraille.new
+      handle = File.open("test_message.txt", "r")
+      #test message text is:  abc
+      @incoming_text = handle.read
+      handle.close
+      @characters = @braille.isolate(@incoming_text)
+      @characters.pop
+      @braille_characters = @braille.letter_to_braille(@characters)
+    end
+
+    it "can transpose @braille_characters array" do
+      expected = @braille.transposer(@braille_characters)
+      expect(expected).to eq([["0.", "0.", "00"],["..", "0.", ".."],["..", "..", ".."]])
+    end
+  end
