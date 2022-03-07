@@ -9,16 +9,20 @@ RSpec.describe ConvertToEnglish do
       #test message text is the inverse of "abc"
       @incoming_text = handle.read
       handle.close
-      @english_reference = @braille.braille_reference.invert
+
   end
 
   it "exists" do
     expect(@english).to be_a(ConvertToEnglish)
   end
 
-  it 'has inverted @braille_reference' do
-    expect(@english_reference["0.", "..", ".."]).to eq("a")
-    expect(@english_reference[".0", "00", ".."]).to eq('j')
+  it "exists" do
+    expect(@english.braille).to be_a(ConvertToBraille)
+  end
+
+  it 'has an inverted @braille_reference' do
+    expect(@english.english_reference[["0.", "..", ".."]]).to eq("a")
+    expect(@english.english_reference[[".0", "00", ".."]]).to eq('j')
   end
 
   it 'can #message_split the braille.txt' do
@@ -26,3 +30,4 @@ RSpec.describe ConvertToEnglish do
 
     expect(expected.length).to eq(3)
   end
+end
