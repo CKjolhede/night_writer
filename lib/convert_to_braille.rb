@@ -2,7 +2,7 @@ require_relative "string_formatting.rb"
 
 class ConvertToBraille
   include StringFormatting
-  attr_reader :braille_reference, :braille_characters, :transposed_braille, :braille_strings, :line_segments
+  attr_reader :braille_reference, :braille_characters, :transposed_braille, :braille_strings, :line_segments, :braille_output
 
   def initialize
     @braille_reference = {

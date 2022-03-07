@@ -20,6 +20,9 @@ module StringFormatting
     # require "pry"; binding.pry
     @braille_output = @transposed_braille.flatten.join("\n")
     # require "pry"; binding.pry
+    # @braille_output = @braille_output.scan(/.{1,240}/).gsub("\n")
+    # @braille_output.join("\n")
+    # require "pry"; binding.pry
   end
 
 
