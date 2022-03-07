@@ -1,5 +1,5 @@
 require 'simplecov'
 SimpleCov.start
 
-require relative "converter_braille.rb"
-require relative "converter_english.rb"
+require_relative "convert_to_braille_spec.rb"
+require_relative "convert_to_english_spec.rb"

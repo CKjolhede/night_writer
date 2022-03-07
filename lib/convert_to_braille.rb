@@ -1,5 +1,5 @@
 class ConvertToBraille
-  attr_reader :braille_reference, :braille_characters
+  attr_reader :braille_reference, :braille_characters, :transposed_braille
 
   def initialize
     @braille_reference = {
@@ -48,5 +48,9 @@ class ConvertToBraille
 
   def transposer(braille_characters)
     @transposed_braille = braille_characters.transpose
+  end
+
+  def convert_to_string
+    @transposed_braille.map! {|element| element.join}
   end
 end
