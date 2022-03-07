@@ -45,4 +45,8 @@ class ConvertToBraille
   def letter_to_braille(characters)
     @braille_characters = @characters.map {|letter| @braille_reference[letter]}
   end
+
+  def transposer(braille_characters)
+    @transposed_braille = braille_characters.transpose
+  end
 end
