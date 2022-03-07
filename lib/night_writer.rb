@@ -6,7 +6,7 @@ handle.close
 
 # braille = ConvertToBraille.new
 
-puts "Created #{incoming_text} containing #{incoming_text.length} characters."
+# puts "Created #{incoming_text} containing #{incoming_text.length} characters."
 
 writer = File.open(ARGV[1], "w")
 # write.write(braille.convert(incoming_text))
