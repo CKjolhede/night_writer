@@ -1,15 +1,16 @@
+require_relative 'convert_to_braille.rb'
+require_relative 'string_formatting.rb'
+
 handle = File.open(ARGV[0], "r")
-
-incoming_text = handle.read
-
+@incoming_text = handle.read
 handle.close
 
-# braille = ConvertToBraille.new
+braille = ConvertToBraille.new
 
-# puts "Created #{incoming_text} containing #{incoming_text.length} characters."
 
 writer = File.open(ARGV[1], "w")
-# write.write(braille.convert(incoming_text))
+@incoming_text.delete("\n")
+converted = writer.write(braille.convert(@incoming_text))
 writer.close
-#
-puts "Created #{ARGV[1]} containing #{incoming_text.length} characters"
+#long_test_message contains 61 letters. After conversion to 80 characters per line, the output file should contain 371 characters (366 braille characters and 5 "/n"'s)
+puts "Created #{ARGV[1]} containing #{converted} characters"
