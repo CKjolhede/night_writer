@@ -1,9 +1,9 @@
-require './lib/convert_to_braille'
+require './lib/convert_to_braille.rb'
 
 
 RSpec.describe ConvertToBraille do
   before :each do
-    @braille = ConvertToBraile.new
+    @braille = ConvertToBraille.new
   end
 
   it "exists" do
