@@ -10,8 +10,7 @@ braille = ConvertToBraille.new
 
 writer = File.open(ARGV[1], "w")
 @incoming_text.delete("\n")
-writer.write(braille.convert(@incoming_text))
+converted = writer.write(braille.convert(@incoming_text))
 writer.close
-#
-puts "Created #{ARGV[1]} containing #{@incoming_text.length} characters"
-# puts "Created #{incoming_text} containing #{incoming_text.length} characters."
+#long_test_message contains 61 letters. After conversion to 80 characters per line, the output file should contain 371 characters (366 braille characters and 5 "/n"'s)
+puts "Created #{ARGV[1]} containing #{converted} characters"

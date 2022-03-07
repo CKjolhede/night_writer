@@ -151,8 +151,8 @@ end
 
       it "can convert > 80 characters into formated braille file" do
         #@incoming_text file contains 61 characters. The resulting braile.txt file should contain 6x that.  366 characters
-        expected = @braille.convert(@incoming_text).length
-        expect(expected).to eq(366)
+        expected = @braille.convert(@incoming_text)
+        expect(expected).to eq("0.0.00000.00000..0.00.0.00000.00000..0.00.0..000000..0.0.00..0.0.00.0.0.00000.00\n..0....0.00.00000.00..0....0.00.00000.00..0.00...0.00.0.00000.0.0000.0.0.0.0.00.\n....................0.0.0.0.0.0.0.0.0.0.0000.0000000..0.0.....0.0.......0...0...\n.00.0.0..0000..00..0.0.0.0.00.0.0.00.00.0.\n0000.00.0..0.000000.0.0.0.0000.0.0..0000..\n0.....0...0...0.....0...0.0.......000.0...")
       end
   end
 #
