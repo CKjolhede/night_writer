@@ -1,8 +1,9 @@
 require_relative "string_formatting.rb"
 
+
 class ConvertToBraille
   include StringFormatting
-  attr_reader :braille_reference, :braille_characters, :transposed_braille, :braille_strings, :line_segments, :braille_output
+  attr_reader :braille_reference, :braille_characters, :transposed_braille, :braille_strings, :line_segments, :braille_output, :characters
 
   def initialize
     @braille_reference = {
@@ -41,29 +42,46 @@ class ConvertToBraille
   #transpose the arrays to put into braille format using transpose method
   #convert the arrays back into strings and combine them using the join method
   #format the strings with limit of 80 characters per line
+  def convert(text)
+    isolate(text)
+    letter_to_braille(@characters)
+    transposer(@braille_characters)
+    @braille_strings = self.convert_to_string
+    @braille_output = format(@braille_strings)
+    @braille_output
+  end
 
   def isolate(text)
     @characters = text.chars
+    @characters.delete("\n")
+    @characters
+  # require "pry"; binding.pry
   end
 
   def letter_to_braille(characters)
-    @braille_characters = @characters.map {|letter| @braille_reference[letter]}
+    # require "pry"; binding.pry
+      @braille_characters = characters.map {|letter| @braille_reference[letter]}
+      # @braille_characters.pop
+      # @braille_characters
+      # characters.map {|letter| @braille_reference[letter]}
   end
 
   def convert_to_string
     @braille_strings = @transposed_braille.map! {|element| element.join}
-    # require "pry"; binding.pry
+    # @transposed_braille.map! {|element| element.join}
   end
+
+# private
 
   def format(strings)
     if strings[0].length > 80
-      split_string
+      split_string(strings)
       transposer(@line_segments)
       final_formatting
       @braille_output
     else
-      strings.join("\n")
+      @braille_output = strings.join("\n")
     end
   end
-  
+
 end
