@@ -1,5 +1,5 @@
 class ConvertToBraille
-  attr_reader :braille_reference
+  attr_reader :braille_reference, :braille_characters, :transposed_braille
 
   def initialize
     @braille_reference = {
@@ -30,5 +30,27 @@ class ConvertToBraille
       "y" => ["00", ".0", "00"],
       "z" => ["0.", ".0", "00"]
     }
+  end
+
+  #things to do to incoming text:
+  #isolate each character using .chars method
+  #convert the individual strings to their braille array equivalent
+  #transpose the arrays to put into braille format using transpose method
+  #convert the arrays back into strings and combine them using the join method
+
+  def isolate(text)
+    @characters = text.chars
+  end
+
+  def letter_to_braille(characters)
+    @braille_characters = @characters.map {|letter| @braille_reference[letter]}
+  end
+
+  def transposer(braille_characters)
+    @transposed_braille = braille_characters.transpose
+  end
+
+  def convert_to_string
+    @transposed_braille.map! {|element| element.join}
   end
 end

@@ -1,9 +1,14 @@
 require './lib/convert_to_braille.rb'
+# require 'test_message.txt'
 
 
 RSpec.describe ConvertToBraille do
   before :each do
     @braille = ConvertToBraille.new
+      handle = File.open("test_message.txt", "r")
+      #test message text is:  abc
+      @incoming_text = handle.read
+      handle.close
   end
 
   it "exists" do
@@ -15,4 +20,53 @@ RSpec.describe ConvertToBraille do
     expect(@braille.braille_reference['z']).to eq(["0.", ".0", "00"])
   end
 
+  it 'can isolate individual characters from text' do
+    expected = @braille.isolate(@incoming_text)
+    #test message is "abc"
+    expect(expected).to eq(["a", "b", "c", "\n"])
+  end
 end
+
+  context "isolated characters" do
+    before :each do
+      @braille = ConvertToBraille.new
+        handle = File.open("test_message.txt", "r")
+        #test message text is:  abc
+        @incoming_text = handle.read
+        handle.close
+        @characters = @braille.isolate(@incoming_text)
+        @characters.pop
+    end
+
+    it 'can change each @characters into their braille equivalent' do
+      expected = @braille.letter_to_braille(@characters)
+      # require "pry"; binding.pry
+      expect(expected).to eq([["0.", "..", ".."], ["0.", "0.", ".."], ["00", "..", ".."]])
+    end
+  end
+
+  context "Transform Braille Character Array" do
+    before :each do
+      @braille = ConvertToBraille.new
+      handle = File.open("test_message.txt", "r")
+      #test message text is:  abc
+      @incoming_text = handle.read
+      handle.close
+      @characters = @braille.isolate(@incoming_text)
+      @characters.pop
+      @braille_characters = @braille.letter_to_braille(@characters)
+    end
+
+    it "can transpose @braille_characters array" do
+      expected = @braille.transposer(@braille_characters)
+      expect(expected).to eq([["0.", "0.", "00"],["..", "0.", ".."],["..", "..", ".."]])
+    end
+
+    it 'can convert the transposed array into strings' do
+      # @transposed_braille.map! {|element| element.join }
+      @braille.transposer(@braille_characters)
+      expected = @braille.convert_to_string
+      # require "pry"; binding.pry
+      expect(expected).to eq(["0.0.00","..0...","......"])
+    end
+  end
