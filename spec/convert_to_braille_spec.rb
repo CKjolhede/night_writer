@@ -129,6 +129,22 @@ end
       expected = @braille.format(@braille.braille_strings)
       expect(expected).to eq("0.0.00000.00000..0.00.0.00000.00000..0.00.0..000000..0.0.00..0.0.00.0.0.00000.00\n..0....0.00.00000.00..0....0.00.00000.00..0.00...0.00.0.00000.0.0000.0.0.0.0.00.\n....................0.0.0.0.0.0.0.0.0.0.0000.0000000..0.0.....0.0.......0...0...\n.00.0.0..0000..00..0.0.0.0.00.0.0.00.00.0.\n0000.00.0..0.000000.0.0.0.0000.0.0..0000..\n0.....0...0...0.....0...0.0.......000.0...")
     end
+  end
 
+    context "Convert helper method" do
+      before :each do
+        @braille = ConvertToBraille.new
+        handle = File.open("long_test_message.txt", "r")
+        handle_short = File.open("test_message.txt", "r")
+        #long test message text is:  abcdefghijklmnopqrstuvwxyzisthistheendofthelinethisistheextra
+        @incoming_text = handle.read
+        @short_text = handle_short.read
+        handle.close
+        handle_short.close
+      end
 
+      it "can convert a short text string into braille" do
+        expected = @braille.convert(@short_text)
+        expect(expected).to eq("0.0.00\n..0...\n......")
+      end
   end
