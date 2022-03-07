@@ -88,11 +88,22 @@ end
     end
 
     it "can divide braille string into separate strings of 80 characters" do
-      top_row_segment = @braille.split_string[0].first.length
-      middle_row_segment = @braille.split_string[1].first.length
-      bottom_row_segment = @braille.split_string[2].first.length
+      top_row_segment = @braille.split_string[0][0].length
+      middle_row_segment = @braille.split_string[1][0].length
+      bottom_row_segment = @braille.split_string[2][0].length
       expect(top_row_segment).to eq(80)
       expect(middle_row_segment).to eq(80)
       expect(bottom_row_segment).to eq(80)
+    end
+
+    it 'can transpose segmented braille arrays' do
+      first_top_row_segment = @braille.split_string[0][0]
+      first_middle_row_segment = @braille.split_string[1][0]
+      first_bottom_row_segment = @braille.split_string[2][0]
+      # require "pry"; binding.pry
+      expected = @braille.transposer(@braille.split_string)
+      expect(expected[0][0]).to eq(first_top_row_segment)
+      expect(expected[0][1]).to eq(first_middle_row_segment)
+      expect(expected[0][2]).to eq(first_bottom_row_segment)
     end
   end
