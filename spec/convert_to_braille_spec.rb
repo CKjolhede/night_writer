@@ -1,4 +1,5 @@
 require './lib/convert_to_braille.rb'
+require './lib/string_formatting.rb'
 # require 'test_message.txt'
 
 
@@ -68,5 +69,30 @@ end
       expected = @braille.convert_to_string
       # require "pry"; binding.pry
       expect(expected).to eq(["0.0.00","..0...","......"])
+    end
+  end
+
+  context "incoming text over 80 characters" do
+    before :each do
+      @braille = ConvertToBraille.new
+      handle = File.open("long_test_message.txt", "r")
+      #test message text is:  abc
+      @incoming_text = handle.read
+      handle.close
+      @characters = @braille.isolate(@incoming_text)
+      @characters.pop
+      @braille_characters = @braille.letter_to_braille(@characters)
+      @braille.transposer(@braille_characters)
+      @braille.convert_to_string
+      # require "pry"; binding.pry
+    end
+
+    it "can divide braille string into separate strings of 80 characters" do
+      top_row_segment = @braille.split_string[0].first.length
+      middle_row_segment = @braille.split_string[1].first.length
+      bottom_row_segment = @braille.split_string[2].first.length
+      expect(top_row_segment).to eq(80)
+      expect(middle_row_segment).to eq(80)
+      expect(bottom_row_segment).to eq(80)
     end
   end

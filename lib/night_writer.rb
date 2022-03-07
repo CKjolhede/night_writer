@@ -1,15 +1,13 @@
 handle = File.open(ARGV[0], "r")
-
 incoming_text = handle.read
+ßhandle.close
 
-handle.close
+braille = ConvertToBraille.new
 
-# braille = ConvertToBraille.new
-
-# puts "Created #{incoming_text} containing #{incoming_text.length} characters."
 
 writer = File.open(ARGV[1], "w")
-# write.write(braille.convert(incoming_text))
+write.write(braille.convert(incoming_text))
 writer.close
 #
 puts "Created #{ARGV[1]} containing #{incoming_text.length} characters"
+# puts "Created #{incoming_text} containing #{incoming_text.length} characters."

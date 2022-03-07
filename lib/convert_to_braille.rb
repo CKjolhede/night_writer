@@ -1,5 +1,8 @@
+require_relative "string_formatting.rb"
+
 class ConvertToBraille
-  attr_reader :braille_reference, :braille_characters, :transposed_braille
+  include StringFormatting
+  attr_reader :braille_reference, :braille_characters, :transposed_braille, :braille_strings
 
   def initialize
     @braille_reference = {
@@ -37,6 +40,7 @@ class ConvertToBraille
   #convert the individual strings to their braille array equivalent
   #transpose the arrays to put into braille format using transpose method
   #convert the arrays back into strings and combine them using the join method
+  #format the strings with limit of 80 characters per line
 
   def isolate(text)
     @characters = text.chars
@@ -51,6 +55,8 @@ class ConvertToBraille
   end
 
   def convert_to_string
-    @transposed_braille.map! {|element| element.join}
+    @braille_strings = @transposed_braille.map! {|element| element.join}
   end
+
+
 end
