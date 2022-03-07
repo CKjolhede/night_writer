@@ -31,4 +31,10 @@ class ConvertToBraille
       "z" => ["0.", ".0", "00"]
     }
   end
+
+  #things to do to incoming text:
+  #isolate each character using .chars method
+  #convert the individual strings to their braille array equivalent
+  #transpose the arrays to put into braille format using transpose method
+  #convert the arrays back into strings and combine them using the join method
 end
