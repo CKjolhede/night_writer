@@ -1,6 +1,7 @@
 require './lib/convert_to_braille.rb'
 require './lib/string_formatting.rb'
 require './lib/library.rb'
+require './lib/convert_to_english.rb'
 
 
 RSpec.describe ConvertToEnglish do
@@ -37,10 +38,10 @@ RSpec.describe ConvertToEnglish do
     row_array = @english.message_split(@incoming_text)
     expected_top = @english.divide_top_row(row_array)
     expected_mid = @english.divide_mid_row(row_array)
-    expected_bot = @english.divide_bot_rob(row_array)
+    expected_bot = @english.divide_bot_row(row_array)
 
-    expect(expected_top[0]).to eq(["0","."])
-    expect(expected_top[0]).to eq([".","."])
-    expect(expected_bot[0]).to eq([".","."])
+    expect(expected_top[0]).to eq("0.")
+    expect(expected_mid[0]).to eq("..")
+    expect(expected_bot[0]).to eq("..")
   end
 end

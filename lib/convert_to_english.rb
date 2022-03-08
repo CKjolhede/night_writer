@@ -39,5 +39,17 @@ class ConvertToEnglish
       @braille_message_split = braille_text.scan(/.{1,#{braille_message_length}}/)
       @braille_message_split
     end
-braille_message_split[0].scan(/.{1,2}/)
+
+    def divide_top_row(row_array)
+      row_array[0].scan(/.{1,2}/)
+    end
+
+    def divide_mid_row(row_array)
+      row_array[1].scan(/.{1,2}/)
+    end
+
+    def divide_bot_row(row_array)
+      row_array[2].scan(/.{1,2}/)
+    end
+    
 end
