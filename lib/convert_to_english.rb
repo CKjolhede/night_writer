@@ -54,4 +54,8 @@ class ConvertToEnglish
       zipped_array.map! {|letter| @english_reference[letter]}
     end
 
+    def combine_characters(converted_array)
+      @output_english_text = converted_array.join.to_s
+    end
+    
 end
