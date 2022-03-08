@@ -5,10 +5,9 @@ require './lib/convert_to_english.rb'
 
 RSpec.describe ConvertToEnglish do
   before :each do
-
     @english = ConvertToEnglish.new
-      handle = File.open("braille.txt", "r")
-       #message text is the inverse of "abc the quick brown fox jumps over the lazy dog"
+      handle = File.open("test_message_in_braille.txt", "r")
+       #message text is the inverse of "abc"
       @incoming_text = handle.read
       handle.close
   end
@@ -33,12 +32,13 @@ RSpec.describe ConvertToEnglish do
   end
 
   it 'can divide each split line of braille text into 2 element arrays'do
-    row_array = @english.message_split(@incoming_text)
-    expected = @english.divide_braille_rows(row_array)
+    @english.message_split(@incoming_text)
+    @english.divide_braille_rows(@english.braille_message_split)
+    expected = @english.separated_braille_rows
 
-    expect(expected[0][0]).to eq("0.")
-    expect(expected_mid[0][1]).to eq("..")
-    expect(expected_bot[0][2]).to eq("..")
+    expect(expected[0]).to eq(["0.","0.","00"])
+    expect(expected[1]).to eq(["..","0.",".."])
+    expect(expected[2]).to eq(["..","..",".."])
   end
 end
 
@@ -49,24 +49,28 @@ context "combining and converting braille message arrays" do
       #message text is the inverse of "abc the quick brown fox jumps over the lazy dog"
       @incoming_text = handle.read
       handle.close
-    row_array = @english.message_split(@incoming_text)
-    @english.divide_braille_rows(row_array)
+    @english.message_split(@incoming_text)
+    # require "pry"; binding.pry
+    @english.divide_braille_rows(@english.braille_message_split)
   end
 
   it 'can combine corresponding indexes of 3 braille_message_arrays' do
+    # require "pry"; binding.pry
     expected = @english.zip_braille_arrays
-    expect(expected.length*@english.braille_message_row_count).to eq(@english.braille_message_length)
-    expect(expected[0].length).to eq(@english.baille_message_row_count)
+    expect(expected.length * @english.braille_message_row_count).to eq(@english.braille_message_length)
+    expect(expected[0].length).to eq(@english.braille_message_row_count)
   end
 
   it 'can translate braille characters into english letters' do
-    @english.zip_braille_arrays(@english.top, @english.mid, @english.bot)
+    @english.divide_braille_rows(@braille_message_split)
+    @english.zip_braille_arrays
     expected = @english.braille_to_english(@english.zipped)
 
     expect(expected).to eq(['a','b','c','t','h','e','q','u','i','c','k','b','r','o','w','n','f','o','x','j','u','m','p','s','o','v','e','r','t','h','e','l','a','z','y','d','o','g'])
   end
 
   it 'can join array of characters' do
+    @english.divide_braille_rows(@braille_message_split)
     @english.zip_braille_arrays(@english.top, @english.mid, @english.bot)
     @english.braille_to_english(@english.zipped)
     expected = @english.combine_characters(@english.zipped)
@@ -78,8 +82,8 @@ context "Convert helper method" do
   before :each do
     @english = ConvertToEnglish.new
     handle = File.open("long_test_braille_message.txt", "r")
-    handle_short = File.open("test_braille_message.txt", "r")
-    #long test message text:  abcdefghijklmnopqrstuvwxyzisthistheendofthelinethisistheextra
+    handle_short = File.open("test_message_in_braille.txt", "r")
+    #long test message text:  xxxxx..(80 total)..xxxxx/n aaaa...(80 total)...aaa/n xxxx>>>(890 total)...xxxx
     @incoming_text = handle.read
     @short_text = handle_short.read
     handle.close

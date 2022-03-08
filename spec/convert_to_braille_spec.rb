@@ -5,7 +5,7 @@ require './lib/library.rb'
 RSpec.describe ConvertToBraille do
   before :each do
     @braille = ConvertToBraille.new
-      handle = File.open("test_message.txt", "r")
+      handle = File.open("test_message_in_english.txt", "r")
       #test message text is:  abc
       @incoming_text = handle.read
       handle.close
@@ -30,7 +30,7 @@ end
 context "isolated characters" do
   before :each do
     @braille = ConvertToBraille.new
-    handle = File.open("test_message.txt", "r") #test message text is:  abc
+    handle = File.open("test_message_in_english.txt", "r") #test message text is:  abc
     @incoming_text = handle.read
     handle.close
 
@@ -47,7 +47,7 @@ end
 context "Transform Braille Character Array" do
   before :each do
     @braille = ConvertToBraille.new
-    handle = File.open("test_message.txt", "r") #test message text is:  abc
+    handle = File.open("test_message_in_english.txt", "r") #test message text is:  abc
     @incoming_text = handle.read
     handle.close
 
@@ -74,7 +74,7 @@ context "incoming text over 80 characters" do
     @braille = ConvertToBraille.new
     handle = File.open("long_test_message.txt", "r")
       #long test message text is:  abcdefghijklmnopqrstuvwxyzisthistheendofthelinethisistheextra
-    handle_short = File.open("test_message.txt", "r")
+    handle_short = File.open("test_message_in_english.txt", "r")
     @incoming_text = handle.read
     @short_text = handle_short.read
     handle.close
@@ -132,7 +132,7 @@ end
     before :each do
       @braille = ConvertToBraille.new
       handle = File.open("long_test_message.txt", "r")
-      handle_short = File.open("test_message.txt", "r")
+      handle_short = File.open("test_message_in_english.txt", "r")
       #long test message text:  abcdefghijklmnopqrstuvwxyzisthistheendofthelinethisistheextra
       @incoming_text = handle.read
       @short_text = handle_short.read

@@ -1,7 +1,7 @@
 require_relative 'convert_to_braille.rb'
 
 class ConvertToEnglish
-  attr_reader :english_reference, :braille, :top, :mid, :bot, :zipped, :braille_message_row_count, :separated_braille_rows, :braille_message_length
+  attr_reader :english_reference, :braille, :zipped, :braille_message_row_count, :separated_braille_rows, :braille_message_length, :braille_message_split
 
   def initialize
     @braille = ConvertToBraille.new
@@ -35,12 +35,13 @@ class ConvertToEnglish
        @separated_braille_rows = []
        @zipped = []
        @braille_message_row_count = braille_message_row_count
+       @array_temp = []
     end
 
     def convert(text)
       message_split(text)
       divide_braille_rows(@braille_message_split)
-      zip_braille_arrays(@top, @mid, @bot)
+      zip_braille_arrays
       braille_to_english(@zipped)
       combine_characters(@zipped)
       @output_english_text
@@ -49,28 +50,32 @@ class ConvertToEnglish
 
     def message_split(braille_text)
       @braille_message_length = braille_text.length / 3
-      @braille_message_row_count = ((@braille_message_length / 80).to_f).ceil
-      @braille_message_split = braille_text.scan(/.{1,#{braille_message_length}}/)
+      @braille_message_row_count = (@braille_message_length / 80.to_f).ceil  #ceil rounds all numbers UP to next whole #
+      @braille_message_split = braille_text.scan(/.{1,#{@braille_message_length}}/)
       @braille_message_split
       # require "pry"; binding.pry
     end
 
-    def divide_braille_rows(row_array, n = 1, index = 0)
+    def divide_braille_rows(row_array)
+            n = 1
+            index = 0
       while n <= @braille_message_row_count
-        array = []
+        # @array_temp = []
           3.times do
             element = row_array[index].scan(/.{1,2}/)
-            array << element
+            @separated_braille_rows << element
             index += 1
           end
           n += 1
-        @separated_braille_rows << array
-        # require "pry"; binding.pry
+          # require "pry"; binding.pry
+          # @separated_braille_rows << @array_temp
       end
+      return @separated_braille_rows
+      require "pry"; binding.pry
     end
 
     def zip_braille_arrays(count = @braille_message_row_count,sep = @separated_braille_rows, n = 0)
-
+    # require "pry"; binding.pry
       until n > (count - 1)
         text_line = sep[n][0].zip(sep[n][1], sep[n][2])
         @zipped << text_line
