@@ -57,10 +57,10 @@ context "combining and converting braille message arrays" do
   end
 
   it 'can combine corresponding indexes of 3 braille_message_arrays' do
-    expected = zip_braille_arrays(@english.top, @english.mid, @english.bot)
+    expected = @english.zip_braille_arrays(@english.top, @english.mid, @english.bot)
 
     expect(expected.length).to eq(@english.top.length)
-    expect(expected[0].length).to eq(6)
+    expect(expected[0].length).to eq(3)
   end
 
 end

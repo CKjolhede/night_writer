@@ -40,21 +40,14 @@ class ConvertToEnglish
       @braille_message_split
     end
 
-    # def divide_top_row(row_array)
-    #   @top = row_array[0].scan(/.{1,2}/)
-    # end
-    #
-    # def divide_mid_row(row_array)
-    #   @mid = row_array[1].scan(/.{1,2}/)
-    # end
-    #
-    # def divide_bot_row(row_array)
-    #   @bot = row_array[2].scan(/.{1,2}/)
-    # end
     def divide_braille_rows(row_array)
       @top = row_array[0].scan(/.{1,2}/)
       @mid = row_array[1].scan(/.{1,2}/)
       @bot = row_array[2].scan(/.{1,2}/)
+    end
+
+    def zip_braille_arrays(top_row, mid_row, bot_row)
+      top_row.zip(mid_row, bot_row)
     end
 
 end
