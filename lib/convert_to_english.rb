@@ -1,7 +1,7 @@
 require_relative 'convert_to_braille.rb'
 
 class ConvertToEnglish
-  attr_reader :english_reference, :braille
+  attr_reader :english_reference, :braille, :top, :mid, :bot
 
   def initialize
     @braille = ConvertToBraille.new
@@ -40,16 +40,21 @@ class ConvertToEnglish
       @braille_message_split
     end
 
-    def divide_top_row(row_array)
-      row_array[0].scan(/.{1,2}/)
+    # def divide_top_row(row_array)
+    #   @top = row_array[0].scan(/.{1,2}/)
+    # end
+    #
+    # def divide_mid_row(row_array)
+    #   @mid = row_array[1].scan(/.{1,2}/)
+    # end
+    #
+    # def divide_bot_row(row_array)
+    #   @bot = row_array[2].scan(/.{1,2}/)
+    # end
+    def divide_braille_rows(row_array)
+      @top = row_array[0].scan(/.{1,2}/)
+      @mid = row_array[1].scan(/.{1,2}/)
+      @bot = row_array[2].scan(/.{1,2}/)
     end
 
-    def divide_mid_row(row_array)
-      row_array[1].scan(/.{1,2}/)
-    end
-
-    def divide_bot_row(row_array)
-      row_array[2].scan(/.{1,2}/)
-    end
-    
 end
