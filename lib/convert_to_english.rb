@@ -34,4 +34,10 @@ class ConvertToEnglish
        ["0.", ".0", "00"]=>"z"}
     end
 
+    def message_split(braille_text)
+      braille_message_length = braille_text.length / 3
+      @braille_message_split = braille_text.scan(/.{1,#{braille_message_length}}/)
+      @braille_message_split
+    end
+
 end
