@@ -71,10 +71,10 @@ context "combining and converting braille message arrays" do
 
   it 'can join array of characters' do
     @english.divide_braille_rows(@braille_message_split)
-    @english.zip_braille_arrays(@english.top, @english.mid, @english.bot)
+    @english.zip_braille_arrays
     @english.braille_to_english(@english.zipped)
-    expected = @english.combine_characters(@english.zipped)
-    expect(expected).to eq("abcthequickbrownfoxjumpsoverthelazydog")
+    expected = @english.combine_characters(@english.converted_rows)
+    expect(expected).to eq("abc")
   end
 end
 

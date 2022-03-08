@@ -6,7 +6,7 @@ class ConvertToEnglish
   def initialize
     @braille = ConvertToBraille.new
     @english_reference = {
-      ["0.", "..", ".."]=>"a",
+       ["0.", "..", ".."]=>"a",
        ["0.", "0.", ".."]=>"b",
        ["00", "..", ".."]=>"c",
        ["00", ".0", ".."]=>"d",
@@ -31,66 +31,75 @@ class ConvertToEnglish
        [".0", "00", ".0"]=>"w",
        ["00", "..", "00"]=>"x",
        ["00", ".0", "00"]=>"y",
-       ["0.", ".0", "00"]=>"z"}
+       ["0.", ".0", "00"]=>"z" }
        @separated_braille_rows = []
        @zipped = []
        @braille_message_row_count = braille_message_row_count
        @array_temp = []
-    end
+  end
 
-    def convert(text)
-      message_split(text)
-      divide_braille_rows(@braille_message_split)
-      zip_braille_arrays
-      braille_to_english(@zipped)
-      combine_characters(@zipped)
-      @output_english_text
-      # require "pry"; binding.pry
-    end
-
-    def message_split(braille_text)
-      @braille_message_length = braille_text.length / 3
-      @braille_message_row_count = (@braille_message_length / 80.to_f).ceil  #ceil rounds all numbers UP to next whole #
-      @braille_message_split = braille_text.scan(/.{1,#{@braille_message_length}}/)
-      @braille_message_split
-      # require "pry"; binding.pry
-    end
-
-    def divide_braille_rows(row_array)
-            n = 1
-            index = 0
-      while n <= @braille_message_row_count
-        # @array_temp = []
-          3.times do
-            element = row_array[index].scan(/.{1,2}/)
-            @separated_braille_rows << element
-            index += 1
-          end
-          n += 1
-          # require "pry"; binding.pry
-          # @separated_braille_rows << @array_temp
-      end
-      return @separated_braille_rows
-      require "pry"; binding.pry
-    end
-
-    def zip_braille_arrays(count = @braille_message_row_count,sep = @separated_braille_rows, n = 0)
+  def convert(text)
+    message_split(text)
+    divide_braille_rows(@braille_message_split)
+    zip_braille_arrays
+    braille_to_english(@zipped)
+    combine_characters(@zipped)
+    @output_english_text
     # require "pry"; binding.pry
-      until n > (count - 1)
-        text_line = sep[n][0].zip(sep[n][1], sep[n][2])
-        @zipped << text_line
+  end
+
+  def message_split(braille_text)
+    @braille_message_length = braille_text.length / 3
+    @braille_message_row_count = (@braille_message_length / 80.to_f).ceil  #ceil rounds all numbers UP to next whole #
+    @braille_message_split = braille_text.scan(/.{1,#{@braille_message_length}}/)
+    @braille_message_split
+    # require "pry"; binding.pry
+  end
+
+  def divide_braille_rows(row_array)
+          n = 1
+          index = 0
+    while n <= @braille_message_row_count
+      # @array_temp = []
+        3.times do
+          element = row_array[index].scan(/.{1,2}/)
+          @separated_braille_rows << element
+          index += 1
+        end
         n += 1
-      end
-      @zipped = @zipped.flatten(1)
         # require "pry"; binding.pry
+        # @separated_braille_rows << @array_temp
     end
+    return @separated_braille_rows
+    require "pry"; binding.pry
+  end
 
-    def braille_to_english(zipped_array)
-      zipped_array.map! {|row| row.map! {|letter| @english_reference[letter]}}.join("\n")
+  def zip_braille_arrays(count = @braille_message_row_count,sep = @separated_braille_rows, n = 0)
+  # require "pry"; binding.pry
+    until n > (count - 1)
+      text_line = sep[0].zip(sep[1], sep[2])
+      @zipped << text_line
+      n += 1
     end
+    @zipped = @zipped.flatten(1)
+  end
 
-    def combine_characters(converted_array)
-      @output_english_text = converted_array.join.to_s
+  def braille_to_english(zipped_array)
+    @converted_letters = []
+    @converted_rows = []
+    zipped_array.each do |row|
+      row.each do |letter|
+        @converted_letters << @english_reference[[letter]]
+      end
+      @converted_rows << @converted_letters
     end
+    @converted_rows = @converted_rows.join
+    require "pry"; binding.pry
+  end
+    # zipped_array.map! {|row| row.map {|letter| @english_reference[letter]}}.join("\n")
+
+  def combine_characters(converted_array)
+    @output_english_text = converted_array.join.to_s
+  end
 
 end
