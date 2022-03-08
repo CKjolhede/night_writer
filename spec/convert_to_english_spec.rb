@@ -70,4 +70,11 @@ context "combining and converting braille message arrays" do
     expect(expected).to eq(['a','b','c','t','h','e','q','u','i','c','k','b','r','o','w','n','f','o','x','j','u','m','p','s','o','v','e','r','t','h','e','l','a','z','y','d','o','g'])
   end
 
+  it 'can join array of characters' do
+    @english.zip_braille_arrays(@english.top, @english.mid, @english.bot)
+    @english.braille_to_english(@english.zipped)
+    expected = @english.combine_characters(@english.zipped)
+    expect(expected).to eq("abcthequickbrownfoxjumpsoverthelazydog")
+  end
+
 end
