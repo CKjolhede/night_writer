@@ -34,14 +34,11 @@ RSpec.describe ConvertToEnglish do
 
   it 'can divide each split line of braille text into 2 element arrays'do
     row_array = @english.message_split(@incoming_text)
-    @english.divide_braille_rows(row_array)
-    expected_top = @english.top
-    expected_mid = @english.mid
-    expected_bot = @english.bot
+    expected = @english.divide_braille_rows(row_array)
 
-    expect(expected_top[0]).to eq("0.")
-    expect(expected_mid[0]).to eq("..")
-    expect(expected_bot[0]).to eq("..")
+    expect(expected[0][0]).to eq("0.")
+    expect(expected_mid[0][1]).to eq("..")
+    expect(expected_bot[0][2]).to eq("..")
   end
 end
 
@@ -57,10 +54,9 @@ context "combining and converting braille message arrays" do
   end
 
   it 'can combine corresponding indexes of 3 braille_message_arrays' do
-    expected = @english.zip_braille_arrays(@english.top, @english.mid, @english.bot)
-
-    expect(expected.length).to eq(@english.top.length)
-    expect(expected[0].length).to eq(3)
+    expected = @english.zip_braille_arrays
+    expect(expected.length*@english.braille_message_row_count).to eq(@english.braille_message_length)
+    expect(expected[0].length).to eq(@english.baille_message_row_count)
   end
 
   it 'can translate braille characters into english letters' do

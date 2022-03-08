@@ -7,7 +7,8 @@ class ConvertToBraille
 
   def initialize
     @braille_reference = braille_reference
-    @braille_reference = {
+    @braille_reference ={
+      " " => ["..", "..", ".."],
       "a" => ["0.", "..", ".."],
       "b" => ["0.", "0.", ".."],
       "c" => ["00", "..", ".."],
@@ -33,8 +34,7 @@ class ConvertToBraille
       "w" => [".0", "00", ".0"],
       "x" => ["00", "..", "00"],
       "y" => ["00", ".0", "00"],
-      "z" => ["0.", ".0", "00"]
-    }
+      "z" => ["0.", ".0", "00"]}
 
   end
 
