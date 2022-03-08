@@ -50,4 +50,8 @@ class ConvertToEnglish
       @zipped = top_row.zip(mid_row, bot_row)
     end
 
+    def braille_to_english(zipped_array)
+      zipped_array.map! {|letter| @english_reference[letter]}
+    end
+
 end
