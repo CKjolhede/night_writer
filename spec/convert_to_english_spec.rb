@@ -63,4 +63,11 @@ context "combining and converting braille message arrays" do
     expect(expected[0].length).to eq(3)
   end
 
+  it 'can translate braille characters into english letters' do
+    @english.zip_braille_arrays(@english.top, @english.mid, @english.bot)
+    expected = @english.braille_to_english(@english.zipped)
+
+    expect(expected).to eq(['a','b','c','t','h','e','q','u','i','c','k','b','r','o','w','n','f','o','x','j','u','m','p','s','o','v','e','r','t','h','e','l','a','z','y','d','o','g'])
+  end
+
 end

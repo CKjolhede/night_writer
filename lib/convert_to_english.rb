@@ -1,7 +1,7 @@
 require_relative 'convert_to_braille.rb'
 
 class ConvertToEnglish
-  attr_reader :english_reference, :braille, :top, :mid, :bot
+  attr_reader :english_reference, :braille, :top, :mid, :bot, :zipped
 
   def initialize
     @braille = ConvertToBraille.new
@@ -47,7 +47,7 @@ class ConvertToEnglish
     end
 
     def zip_braille_arrays(top_row, mid_row, bot_row)
-      top_row.zip(mid_row, bot_row)
+      @zipped = top_row.zip(mid_row, bot_row)
     end
 
 end
