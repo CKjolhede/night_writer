@@ -76,5 +76,30 @@ context "combining and converting braille message arrays" do
     expected = @english.combine_characters(@english.zipped)
     expect(expected).to eq("abcthequickbrownfoxjumpsoverthelazydog")
   end
+end
 
+context "Convert helper method" do
+  before :each do
+    @english = ConvertToEnglish.new
+    handle = File.open("long_test_braille_message.txt", "r")
+    handle_short = File.open("test_braille_message.txt", "r")
+    #long test message text:  abcdefghijklmnopqrstuvwxyzisthistheendofthelinethisistheextra
+    @incoming_text = handle.read
+    @short_text = handle_short.read
+    handle.close
+    handle_short.close
+  end
+
+  it "can convert a short text string into braille" do
+    expected = @english.convert(@short_text)
+
+    expect(expected).to eq("abc")
+  end
+
+  it "can convert > 80 characters into formated braille file" do
+    #@incoming_text file contains 371 characters. The resulting english.txt file should contain 371 - 5 for the "\n" =366/(6 braille characters to one english) resulting in 61 total english characters
+    expected = @english.convert(@incoming_text)
+
+    expect(expected).to eq("abcdefghijklmnopqrstuvwxyzisthistheendofthelinethisistheextra")
+  end
 end
