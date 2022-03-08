@@ -32,4 +32,15 @@ RSpec.describe ConvertToEnglish do
 
     expect(expected.length).to eq(3)
   end
+
+  it 'can divide each split line of braille text into 2 element arrays'do
+    row_array = @english.message_split(@incoming_text)
+    expected_top = @english.divide_top_row(row_array)
+    expected_mid = @english.divide_mid_row(row_array)
+    expected_bot = @english.divide_bot_rob(row_array)
+
+    expect(expected_top[0]).to eq(["0","."])
+    expect(expected_top[0]).to eq([".","."])
+    expect(expected_bot[0]).to eq([".","."])
+  end
 end

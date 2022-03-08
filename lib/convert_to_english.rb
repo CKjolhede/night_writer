@@ -39,5 +39,5 @@ class ConvertToEnglish
       @braille_message_split = braille_text.scan(/.{1,#{braille_message_length}}/)
       @braille_message_split
     end
-
+braille_message_split[0].scan(/.{1,2}/)
 end
