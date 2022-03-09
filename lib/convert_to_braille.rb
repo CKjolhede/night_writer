@@ -6,7 +6,9 @@ class ConvertToBraille
   attr_reader :braille_reference, :braille_characters, :transposed_braille, :braille_strings, :line_segments, :braille_output, :characters
 
   def initialize
-    @braille_reference = {
+    @braille_reference = braille_reference
+    @braille_reference ={
+      " " => ["..", "..", ".."],
       "a" => ["0.", "..", ".."],
       "b" => ["0.", "0.", ".."],
       "c" => ["00", "..", ".."],
@@ -32,8 +34,8 @@ class ConvertToBraille
       "w" => [".0", "00", ".0"],
       "x" => ["00", "..", "00"],
       "y" => ["00", ".0", "00"],
-      "z" => ["0.", ".0", "00"]
-    }
+      "z" => ["0.", ".0", "00"]}
+
   end
 
   #things to do to incoming text:

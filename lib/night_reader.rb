@@ -1,15 +1,14 @@
+require_relative 'convert_to_english.rb'
+
+
 handle = File.open(ARGV[0], "r")
-
 incoming_text = handle.read
-
 handle.close
 
-puts "This is the incoming text #{incoming_text}"
+english = EnglishConverter.new
 
-# english = EnglishConverter.new
-#
-# writer = File.open(ARGV[1], "w")
-# write.write(english.convert(incoming_text))
-# write.close
-#
-# puts "Created #{ARGV[1]} containing #{incoming.text.length} characters"
+writer = File.open(ARGV[1], "w")
+writer.write(english.convert(incoming_text))
+write.close
+
+puts "Created #{ARGV[1]} containing #{incoming_text.length} characters"
