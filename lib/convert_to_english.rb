@@ -45,7 +45,6 @@ class ConvertToEnglish
     braille_to_english(@zipped)
     combine_characters(@zipped)
     @output_english_text
-    # require "pry"; binding.pry
   end
 
   def message_split(braille_text)
@@ -53,25 +52,23 @@ class ConvertToEnglish
     @braille_message_row_count = (@braille_message_length / 80.to_f).ceil  #ceil rounds all numbers UP to next whole #
     @braille_message_split = braille_text.scan(/.{1,#{@braille_message_length}}/)
     @braille_message_split
-    # require "pry"; binding.pry
+    # require "pry"; binding?pry
   end
 
   def divide_braille_rows(row_array)
           n = 1
-          index = 0
     while n <= @braille_message_row_count
-      # @array_temp = []
+      index = 0
         3.times do
           element = row_array[index].scan(/.{1,2}/)
           @separated_braille_rows << element
           index += 1
         end
         n += 1
-        # require "pry"; binding.pry
-        # @separated_braille_rows << @array_temp
     end
     return @separated_braille_rows
-    require "pry"; binding.pry
+    # require "pry"; binding.pry
+
   end
 
   def zip_braille_arrays(count = @braille_message_row_count,sep = @separated_braille_rows, n = 0)
@@ -82,24 +79,18 @@ class ConvertToEnglish
       n += 1
     end
     @zipped = @zipped.flatten(1)
+    # require "pry"; binding.pry
   end
 
   def braille_to_english(zipped_array)
-    @converted_letters = []
-    @converted_rows = []
-    zipped_array.each do |row|
-      row.each do |letter|
-        @converted_letters << @english_reference[[letter]]
-      end
-      @converted_rows << @converted_letters
+    @converted_rows = zipped_array.map do |letter| @english_reference[letter]
     end
-    @converted_rows = @converted_rows.join
-    require "pry"; binding.pry
+    @converted_rows.join
   end
     # zipped_array.map! {|row| row.map {|letter| @english_reference[letter]}}.join("\n")
 
   def combine_characters(converted_array)
-    @output_english_text = converted_array.join.to_s
+    @output_english_text = converted_array.
   end
 
 end
